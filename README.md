@@ -2,29 +2,29 @@
 
 Nesse projeto vou aboradar todos os conhecimentos aprendidos no mundo do PHP ao longo dessa jornada.
 
-Um e commerce completo com:
+<div>
+  <img src="./eecomerce.jpg">
+</div>
 
-## Validação de dados
+# Um ecommerce completo com:
 
-## Autenticação de usuário
+### Validação de dados
 
-## Sistema de CRUD
+### Autenticação de usuário
 
-## Sistema de Cadastro e login
+### Sistema de CRUD
 
-## Projeto todo em POO
+### Sistema de Cadastro e login
 
-## Padrão MVC
+### Projeto todo em POO
 
-## Encriptação de dados
+### Padrão MVC
+
+### Encriptação de dados
 
 e muito mais.....
 
 O projeto está em desenvolvimento por min. Desde a arte no figma até o deploy final. Aguardem.
-
-<div>
-  <img src="./eecommerce.jpg">
-</div>
 
 # Tecnologias utilizadas
 

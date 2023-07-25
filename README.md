@@ -2,6 +2,10 @@
 
 Nesse projeto vou aboradar todos os conhecimentos aprendidos no mundo do PHP ao longo dessa jornada.
 
+E um projeto de e-commerce é uma excelente ideia para um próximo projeto. Ele irá me desafiar a aplicar e expandir as habilidades que já adquiri, além de apresentar novos conceitos e desafios. Um sistema de e-commerce pode envolver uma ampla variedade de funcionalidades, como autenticação de usuários, gerenciamento de produtos, carrinho de compras, processamento de pagamentos, etc. Implementar essas funcionalidades irá me ajudar a ganhar uma experiência valiosa.
+
+Além disso, um projeto de e-commerce também pode me dar a oportunidade de aprender sobre outras partes importantes do desenvolvimento web, como o trabalho com bases de dados mais complexas, segurança na web, desempenho e escalabilidade, e muito mais.
+
 <div>
   <img src="./eecomerce.jpg">
 </div>

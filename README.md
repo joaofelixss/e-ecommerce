@@ -1,41 +1,30 @@
-# Sobre o projeto
+# 🛍️ Projeto E-commerce - Versão 1.0
 
-Nesse projeto vou aboradar todos os conhecimentos aprendidos no mundo do PHP ao longo dessa jornada.
+Este projeto é um sistema de e-commerce básico construído com PHP. Estou desenvolvendo esse projeto para aprofundar meus conhecimentos em programação orientada a objetos (OOP) e arquitetura MVC.
 
-E um projeto de e-commerce é uma excelente ideia para um próximo projeto. Ele irá me desafiar a aplicar e expandir as habilidades que já adquiri, além de apresentar novos conceitos e desafios. Um sistema de e-commerce pode envolver uma ampla variedade de funcionalidades, como autenticação de usuários, gerenciamento de produtos, carrinho de compras, processamento de pagamentos, etc. Implementar essas funcionalidades irá me ajudar a ganhar uma experiência valiosa.
+O sistema de e-commerce irá incluir as seguintes funcionalidades na versão 1.0:
 
-Além disso, um projeto de e-commerce também pode me dar a oportunidade de aprender sobre outras partes importantes do desenvolvimento web, como o trabalho com bases de dados mais complexas, segurança na web, desempenho e escalabilidade, e muito mais.
+- 🏷️ **Gerenciamento de Produtos**: O sistema permitirá a adição, edição e remoção de produtos. Cada produto terá várias propriedades, como nome, descrição, preço e imagem.
+
+- 📋 **Visualização de Produtos**: Os usuários poderão visualizar a lista de produtos disponíveis. Cada produto terá um botão ou link para detalhes do produto, que mostrará mais informações sobre o produto.
+
+- 🛒 **Carrinho de Compras**: Os usuários poderão adicionar produtos a um carrinho de compras, visualizar o carrinho de compras, alterar a quantidade de itens no carrinho e remover itens do carrinho.
+
+Este é um projeto em andamento e a versão 1.0 é apenas o início. Conforme meu conhecimento e habilidades crescem, planejo adicionar mais funcionalidades, como autenticação de usuário, checkout e pagamento, gerenciamento de pedidos, e muito mais. 
+
+Acompanhe o progresso aqui no GitHub e sinta-se à vontade para deixar comentários, feedbacks ou sugestões!
+
+# 🎨🖌️ Foto inicial do projeto no Figma
 
 <div>
   <img src="./eecomerce.jpg">
 </div>
 
-# Um ecommerce completo com:
-
-### Validação de dados
-
-### Autenticação de usuário
-
-### Sistema de CRUD
-
-### Sistema de Cadastro e login
-
-### Projeto todo em POO
-
-### Padrão MVC
-
-### Encriptação de dados
-
-e muito mais.....
-
-O projeto está em desenvolvimento por min. Desde a arte no figma até o deploy final. Aguardem.
-
-# Tecnologias utilizadas
+## 🚀 Tecnologias utilizadas
 
 [![My Skills](https://skillicons.dev/icons?i=php,mysql,bootstrap,git,html,figma)](https://skillicons.dev)
 
-# Autor
-
-João Félix Santana de Sousa
+## ✍️ Autor
+João Félix
 
 https://www.linkedin.com/in/joaofelixss

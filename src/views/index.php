@@ -1,6 +1,14 @@
 <?php
+
+require_once __DIR__ . '/../../vendor/autoload.php';
 require_once(__DIR__ . "/../../templates/header.php");
-require_once(__DIR__ . "/../../config/connection.php");
+
+use Felix\ECommerce\Config\Connection;
+
+//instância a classe connection e obtenha a conexão
+$database = new Connection();
+$conn = $database->getConnection();
+
 ?>
 
 <main class="bg-primary">

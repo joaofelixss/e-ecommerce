@@ -1,9 +1,9 @@
 <?php
-require_once(__DIR__ . "/../config/url.php");
+require_once("../../src/config/url.php");
 ?>
 
 <!DOCTYPE html>
-<html lang="en pt-br">
+<html lang="pt-br">
 
 <head>
   <meta charset="UTF-8">

@@ -14,7 +14,7 @@ class Connection
     $this->conn = null;
 
     try {
-      $this->conn = new PDO("Mysql:host=" . $this->host . ";db=" . $this->db, $this->user, $this->pass);
+      $this->conn = new PDO("Mysql:host=" . $this->host . ";dbname=" . $this->db, $this->user, $this->pass);
       $this->conn->exec("set names utf8");
     } catch (PDOException $e) {
       echo "Error na conexão:" . $e->getMessage();

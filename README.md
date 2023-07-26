@@ -17,7 +17,7 @@ Acompanhe o progresso aqui no GitHub e sinta-se à vontade para deixar comentár
 # 🎨🖌️ Foto inicial do projeto no Figma
 
 <div>
-  <img src="./assets/img/e-comerce.jpg">
+  <img src="./assets/img/e-commerce.jpg">
 </div>
 
 ## 🚀 Tecnologias utilizadas

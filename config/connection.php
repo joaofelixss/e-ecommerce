@@ -3,7 +3,7 @@
 class Connection
 {
   private $host = 'localhost';
-  private $db = 'ecommerce';
+  private $db = 'e-commerce';
   private $user = 'root';
   private  $pass = '';
   private  $conn;

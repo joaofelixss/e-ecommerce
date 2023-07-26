@@ -1,0 +1,16 @@
+{
+    "name": "felix/e-commerce",
+    "description": "Projeto E-commerce",
+    "autoload": {
+        "psr-4": {
+            "Felix\\ECommerce\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "João Félix",
+            "email": "felixjoao651@gmail.com"
+        }
+    ],
+    "require": {}
+}

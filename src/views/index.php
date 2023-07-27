@@ -32,7 +32,10 @@ $produtos = $produtoController->index();
               <h3 class="card-title"><?= $produto->getNome() ?></h3>
               <h4 class="card-text">R$ <?= $produto->getPreco() ?></h4>
               <p class="card-text"><?= $produto->getDescricao() ?></p>
-              <a href="#" class="btn btn-primary mt-auto">Adicionar ao carrinho</a>
+              <form method="post" action="carrinho.php">
+                <input type="hidden" name="add" value="<?= $produto->getId() ?>">
+                <input type="submit" value="Adicionar ao Carrinho">
+              </form>
             </div>
           </div>
         </div>

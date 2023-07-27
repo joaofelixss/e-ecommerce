@@ -13,9 +13,27 @@ $conn = $database->getConnection();
 $produtosModel = new Produtos($conn);
 $carrinhoController = new CarrinhoController($produtosModel);
 
-$carrinhoController->add(2);
-$itensCarrinho = $carrinhoController->index();
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
+  if (isset($_POST['add'])) {
+    $idProduto = $_POST['add'];
+    $carrinhoController->add($idProduto);
+  }
+
+  if (isset($_POST['update'])) {
+    $idProduto = $_POST['update'];
+    $quantidade = $_POST['quantidade'];
+    $carrinhoController->updateQuantidade($idProduto, $quantidade);
+  }
+
+  if (isset($_POST['remove'])) {
+    $idProduto = $_POST['remove'];
+    $carrinhoController->remove($idProduto);
+  }
+}
+
+$itensCarrinho = $carrinhoController->index();
+$carrinhoController->add(2);
 ?>
 
 <?php if (!empty($itensCarrinho)) : ?>
@@ -35,19 +53,29 @@ $itensCarrinho = $carrinhoController->index();
         </thead>
         <tbody>
           <?php foreach ($itensCarrinho as $item) : ?>
-            <tr>
-              <td><img src="<?= $BASE_URL . $item->getImagem() ?>" alt="Imagem do Produto" width="100"></td>
-              <td><?= $item->getNome() ?></td>
-              <td>R$ <?= $item->getPreco() ?></td>
-              <td>1</td> <!-- Aqui você precisará implementar a lógica para quantidades -->
-              <td>R$ <?= $item->getPreco() ?></td> <!-- E aqui o subtotal para cada produto -->
-              <td>
-                <a href="#" class="btn btn-primary">Editar</a>
-                <a href="#" class="btn btn-danger">Remover</a>
-              </td>
-            </tr>
+            <?php if ($item !== null) : ?>
+              <tr>
+                <td><img src="<?= $BASE_URL . $item->getImagem() ?>" alt="Imagem do Produto" width="100"></td>
+                <td><?= $item->getNome() ?></td>
+                <td>R$ <?= $item->getPreco() ?></td>
+                <td><?= $item['quantidade'] ?></td> <!-- Aqui você irá mostrar a quantidade do produto -->
+                <td>R$ <?= $item->getPreco() * $item['quantidade'] ?></td> <!-- E aqui o subtotal para cada produto -->
+                <td>
+                  <form method="post">
+                    <input type="hidden" name="update" value="<?= $item->getId() ?>">
+                    <input type="number" name="quantidade" value="<?= $item['quantidade'] ?>">
+                    <input type="submit" value="Atualizar quantidade">
+                  </form>
+                  <form method="post">
+                    <input type="hidden" name="remove" value="<?= $item->getId() ?>">
+                    <input type="submit" value="Remover">
+                  </form>
+                </td>
+              </tr>
+            <?php endif; ?>
           <?php endforeach; ?>
         </tbody>
+
       <?php else : ?>
         <p>Nenhum item no carrinho.</p>
       <?php endif; ?>

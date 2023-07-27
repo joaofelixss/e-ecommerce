@@ -33,7 +33,7 @@ require_once("../../src/config/url.php");
     <nav class="navbar navbar-expand-lg navbar-light">
       <div class="container d-flex justify-content-between">
         <!-- Logo -->
-        <a class="navbar-brand" href="#">E-commerce</a>
+        <a class="navbar-brand" href="<?= $BASE_URL ?>src/views/index.php">E-commerce</a>
 
         <!-- Formulário de pesquisa -->
         <form class="form-inline d-flex align-items-center my-2 my-lg-0">
@@ -42,11 +42,8 @@ require_once("../../src/config/url.php");
             <i class="fas fa-search"></i>
           </button>
         </form>
-
-
-
         <!-- Carrinho -->
-        <a class="nav-link" href="#"><i class="fas fa-shopping-cart"></i> Carrinho</a>
+        <a class="nav-link" href="<?= $BASE_URL ?>src/views/carrinho.php"><i class="fas fa-shopping-cart"></i> Carrinho</a>
       </div>
     </nav>
   </header>

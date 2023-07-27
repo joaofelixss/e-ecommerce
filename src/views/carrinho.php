@@ -54,10 +54,6 @@ $itensCarrinho = $carrinhoController->index();
         <tbody>
           <?php foreach ($itensCarrinho as $item) : ?>
             <?php
-            echo '<pre>';
-            var_dump($item);
-            echo '</pre>';
-
             $produto = $item['produto']; // Acesso ao produto corrigido
             ?>
             <tr>

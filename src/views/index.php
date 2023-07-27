@@ -36,6 +36,7 @@ $produtos = $produtoController->index();
                 <input type="hidden" name="add" value="<?= $produto->getId() ?>">
                 <input type="submit" value="Adicionar ao Carrinho">
               </form>
+              <a href="produto.php?id=<?= $produto->getId() ?>">Ver detalhes</a>
             </div>
           </div>
         </div>

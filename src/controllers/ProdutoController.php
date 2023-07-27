@@ -27,7 +27,6 @@ class ProdutoController
   public function show($id)
   {
     $produto = $this->produtos->buscarProduto($id);
-    // Renderiza a visão de detalhes do produto e passa a variável $produto
-    require_once __DIR__ . '/../../views/produtos/produto.php';
+    return $produto;
   }
 }

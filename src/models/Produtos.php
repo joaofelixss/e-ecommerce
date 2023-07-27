@@ -73,8 +73,20 @@ class Produtos
     $stmt = $this->conn->prepare($query);
     $stmt->execute();
 
-    return $stmt->fetchAll(); // Retorna um array com todos os produtos encontrados no banco de dados.
+    $produtos = [];
+    while ($row = $stmt->fetch(\PDO::FETCH_ASSOC)) {
+      $produto = new Produto();
+      $produto->setId($row['id']);
+      $produto->setNome($row['nome']);
+      $produto->setDescricao($row['descricao']);
+      $produto->setPreco($row['preco']);
+      $produto->setImagem($row['imagem_url']);
+      $produtos[] = $produto;
+    }
+
+    return $produtos;
   }
+
 
   // Método para buscar um produto do banco de dados
   public function buscarProduto($id)

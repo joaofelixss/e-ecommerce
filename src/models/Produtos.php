@@ -91,17 +91,20 @@ class Produtos
   // Método para buscar um produto do banco de dados
   public function buscarProduto($id)
   {
-      $query = "SELECT * FROM produtos WHERE id = :id";
-      $stmt = $this->conn->prepare($query);
-      $stmt->bindParam(":id", $id);
-      $stmt->execute();
-  
-      $row = $stmt->fetch();
-      if ($row) {
-          return new Produto($row['id'], $row['nome'], $row['descricao'], $row['preco'], $row['imagem_url']);
-      }
-      
-      return false; // Retorna falso se nenhum produto for encontrado
+    $stmt = $this->conn->prepare("SELECT * FROM produtos WHERE id = :id");
+    $stmt->bindParam(":id", $id);
+    $stmt->execute();
+
+    $row = $stmt->fetch(\PDO::FETCH_ASSOC);
+    if ($row) {
+      $produto = new Produto();
+      $produto->setId($row['id']);
+      $produto->setNome($row['nome']);
+      $produto->setDescricao($row['descricao']);
+      $produto->setPreco($row['preco']);
+      $produto->setImagem($row['imagem_url']);
+      return $produto;
+    }
+    return null;
   }
-  
 }

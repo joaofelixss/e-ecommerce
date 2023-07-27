@@ -23,19 +23,32 @@ class CarrinhoController
     }
     $this->carrinho = &$_SESSION['carrinho'];
     $this->produtosModel = $produtosModel;
+
+    // Adiciona um produto ao carrinho para teste
+    // Substitua '2' pelo ID do produto que você deseja adicionar
+    $this->add(2);
   }
 
-  public function add($idProduto)
+  public function add($idProduto, $quantidade = 1)
   {
     $produto = $this->produtosModel->buscarProduto($idProduto);
 
+    // Imprima o valor de $produto para verificar se é um objeto Produto válido
+    var_dump($produto);
+
     if ($produto) {
-      $this->carrinho->adicionarProduto($produto);
+      $this->carrinho->adicionarProduto($produto, $quantidade);
       return true;
     }
     return false;
   }
 
+
+
+  public function updateQuantidade($idProduto, $quantidade)
+  {
+    $this->carrinho->updateQuantidade($idProduto, $quantidade);
+  }
 
   public function remove($idProduto)
   {
@@ -44,13 +57,13 @@ class CarrinhoController
 
   public function index()
   {
-
+    // Obtem os itens do carrinho
     $itensCarrinho = $this->carrinho->getItens();
 
-    // Renderiza a visão do carrinho e passa $itensCarrinho
+    // Retorna os itens do carrinho
+    return $itensCarrinho;
     require_once("../views/carrinho.php");
   }
-
 
   public function getCarrinho()
   {

@@ -19,7 +19,8 @@ class ProdutoController
   {
     $produtos = $this->produtos->listarProduto();
     // Renderiza a visão de lista de produtos e passa a variável $produtos
-    require_once __DIR__ . '/../../views/produtos/index.php';
+    require_once('../views/index.php');
+    return $produtos;
   }
 
   // Mostra um produto específico

@@ -28,7 +28,6 @@ $produtos = $produtoController->index();
         <div class="col-md-4">
           <div class="card p-3">
             <img src="<?= $BASE_URL . $produto->getImagem() ?>" class="card-img-top" alt="Imagem do Produto <?= $produto->getId() ?>">
-            <?php var_dump($BASE_URL . $produto->getImagem()); ?>
             <div class="card-body d-flex flex-column">
               <h3 class="card-title"><?= $produto->getNome() ?></h3>
               <h4 class="card-text">R$ <?= $produto->getPreco() ?></h4>
@@ -38,7 +37,6 @@ $produtos = $produtoController->index();
           </div>
         </div>
       <?php endforeach; ?>
-
 
     </div>
   </div>

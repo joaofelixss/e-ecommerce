@@ -12,6 +12,11 @@ class CarrinhoController
 
   public function __construct(Produtos $produtosModel)
   {
+    // Garanta que a classe Produto esteja carregada antes de iniciar a sessão
+    if (!class_exists('\Felix\ECommerce\Models\Produto')) {
+      die('A classe Produto não foi carregada corretamente.');
+    }
+
     // Inicializa a sessão
     if (session_status() == PHP_SESSION_NONE) {
       session_start();
@@ -25,12 +30,12 @@ class CarrinhoController
     $this->produtosModel = $produtosModel;
   }
 
+
   public function add($idProduto, $quantidade = 1)
   {
     $produto = $this->produtosModel->buscarProduto($idProduto);
 
     if ($produto) {
-      var_dump($produto, $produto instanceof \Felix\ECommerce\Models\Produto, $quantidade);
       $this->carrinho->adicionarProduto($produto, $quantidade);
       return true;
     }
@@ -52,11 +57,11 @@ class CarrinhoController
     $itensCarrinho = $this->carrinho->getItens();
 
     $itensCompletos = [];
-    foreach ($itensCarrinho as $item) {
-      $produto = $item;  // item é um objeto Produto
+    foreach ($itensCarrinho as $produtoId => $item) {
+      $produto = $this->produtosModel->buscarProduto($produtoId);
       $itensCompletos[] = [
         'produto' => $produto,
-        'quantidade' => 1  // você precisa definir como você quer determinar a quantidade
+        'quantidade' => $item['quantidade']
       ];
     }
 

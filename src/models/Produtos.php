@@ -95,14 +95,14 @@ class Produtos
     $stmt->bindParam(":id", $id);
     $stmt->execute();
 
-    $row = $stmt->fetch(\PDO::FETCH_ASSOC);
+    $row = $stmt->fetch(\PDO::FETCH_OBJ);
     if ($row) {
       $produto = new Produto();
-      $produto->setId($row['id']);
-      $produto->setNome($row['nome']);
-      $produto->setDescricao($row['descricao']);
-      $produto->setPreco($row['preco']);
-      $produto->setImagem($row['imagem_url']);
+      $produto->setId($row->id);
+      $produto->setNome($row->nome);
+      $produto->setDescricao($row->descricao);
+      $produto->setPreco($row->preco);
+      $produto->setImagem($row->imagem_url);
       return $produto;
     }
     return null;

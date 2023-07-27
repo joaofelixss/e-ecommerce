@@ -7,6 +7,9 @@ use Felix\ECommerce\Config\Connection;
 use Felix\ECommerce\Controllers\CarrinhoController;
 use Felix\ECommerce\Models\Produtos;
 
+// Iniciar a sessão
+session_start();
+
 $database = new Connection();
 $conn = $database->getConnection();
 
@@ -14,10 +17,14 @@ $produtosModel = new Produtos($conn);
 $carrinhoController = new CarrinhoController($produtosModel);
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-
   if (isset($_POST['add'])) {
     $idProduto = $_POST['add'];
     $carrinhoController->add($idProduto);
+  }
+
+  if (isset($_POST['remove'])) {
+    $idProduto = $_POST['remove'];
+    $carrinhoController->remove($idProduto);
   }
 
   if (isset($_POST['update'])) {
@@ -25,15 +32,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $quantidade = $_POST['quantidade'];
     $carrinhoController->updateQuantidade($idProduto, $quantidade);
   }
-
-  if (isset($_POST['remove'])) {
-    $idProduto = $_POST['remove'];
-    $carrinhoController->remove($idProduto);
-  }
 }
-
 $itensCarrinho = $carrinhoController->index();
-$carrinhoController->add(2);
 ?>
 
 <?php if (!empty($itensCarrinho)) : ?>
@@ -53,39 +53,43 @@ $carrinhoController->add(2);
         </thead>
         <tbody>
           <?php foreach ($itensCarrinho as $item) : ?>
-            <?php if ($item !== null) : ?>
-              <tr>
-                <td><img src="<?= $BASE_URL . $item->getImagem() ?>" alt="Imagem do Produto" width="100"></td>
-                <td><?= $item->getNome() ?></td>
-                <td>R$ <?= $item->getPreco() ?></td>
-                <td><?= $item['quantidade'] ?></td> <!-- Aqui você irá mostrar a quantidade do produto -->
-                <td>R$ <?= $item->getPreco() * $item['quantidade'] ?></td> <!-- E aqui o subtotal para cada produto -->
-                <td>
-                  <form method="post">
-                    <input type="hidden" name="update" value="<?= $item->getId() ?>">
-                    <input type="number" name="quantidade" value="<?= $item['quantidade'] ?>">
-                    <input type="submit" value="Atualizar quantidade">
-                  </form>
-                  <form method="post">
-                    <input type="hidden" name="remove" value="<?= $item->getId() ?>">
-                    <input type="submit" value="Remover">
-                  </form>
-                </td>
-              </tr>
-            <?php endif; ?>
+            <?php
+            echo '<pre>';
+            var_dump($item);
+            echo '</pre>';
+
+            $produto = $item['produto']; // Acesso ao produto corrigido
+            ?>
+            <tr>
+              <td><img src="<?= $BASE_URL . $produto->getImagem() ?>" alt="Imagem do Produto" width="100"></td>
+              <td><?= $produto->getNome() ?></td>
+              <td>R$ <?= $produto->getPreco() ?></td>
+              <td><?= $item['quantidade'] ?></td>
+              <td>R$ <?= $produto->getPreco() * $item['quantidade'] ?></td>
+              <td>
+                <form method="post">
+                  <input type="hidden" name="update" value="<?= $produto->getId() ?>">
+                  <input type="number" name="quantidade" value="<?= $item['quantidade'] ?>">
+                  <input type="submit" value="Atualizar quantidade">
+                </form>
+                <form method="post">
+                  <input type="hidden" name="remove" value="<?= $produto->getId() ?>">
+                  <input type="submit" value="Remover">
+                </form>
+              </td>
+            </tr>
           <?php endforeach; ?>
         </tbody>
-
-      <?php else : ?>
-        <p>Nenhum item no carrinho.</p>
-      <?php endif; ?>
       </table>
-      <div class="text-right">
-        <h4>Total: R$ <?= $carrinhoController->getCarrinho()->calcularTotal() ?></h4>
-      </div>
-      <div class="text-right mt-3">
-        <a href="#" class="btn btn-success">Finalizar Compra</a>
-      </div>
+    <?php else : ?>
+      <p>Nenhum item no carrinho.</p>
+    <?php endif; ?>
+    <div class="text-right">
+      <h4>Total: R$ <?= $carrinhoController->getCarrinho()->calcularTotal() ?></h4>
+    </div>
+    <div class="text-right mt-3">
+      <a href="#" class="btn btn-success">Finalizar Compra</a>
+    </div>
     </div>
   </main>
 

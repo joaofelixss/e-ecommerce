@@ -23,27 +23,19 @@ class CarrinhoController
     }
     $this->carrinho = &$_SESSION['carrinho'];
     $this->produtosModel = $produtosModel;
-
-    // Adiciona um produto ao carrinho para teste
-    // Substitua '2' pelo ID do produto que você deseja adicionar
-    $this->add(2);
   }
 
   public function add($idProduto, $quantidade = 1)
   {
     $produto = $this->produtosModel->buscarProduto($idProduto);
 
-    // Imprima o valor de $produto para verificar se é um objeto Produto válido
-    var_dump($produto);
-
     if ($produto) {
+      var_dump($produto, $produto instanceof \Felix\ECommerce\Models\Produto, $quantidade);
       $this->carrinho->adicionarProduto($produto, $quantidade);
       return true;
     }
     return false;
   }
-
-
 
   public function updateQuantidade($idProduto, $quantidade)
   {
@@ -57,12 +49,18 @@ class CarrinhoController
 
   public function index()
   {
-    // Obtem os itens do carrinho
     $itensCarrinho = $this->carrinho->getItens();
 
-    // Retorna os itens do carrinho
-    return $itensCarrinho;
-    require_once("../views/carrinho.php");
+    $itensCompletos = [];
+    foreach ($itensCarrinho as $item) {
+      $produto = $item;  // item é um objeto Produto
+      $itensCompletos[] = [
+        'produto' => $produto,
+        'quantidade' => 1  // você precisa definir como você quer determinar a quantidade
+      ];
+    }
+
+    return $itensCompletos;
   }
 
   public function getCarrinho()

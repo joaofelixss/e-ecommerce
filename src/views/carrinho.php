@@ -85,10 +85,7 @@ $itensCarrinho = $carrinhoController->index();
     </div>
     <div class="text-right mt-3">
       <a href="#" class="btn btn-success">Finalizar Compra</a>
-    </div>
-    </div>
-    <!-- Continuar Comprando -->
-    <div class="mb-3">
+      <!-- Continuar Comprando -->
       <a href="<?= $BASE_URL ?>src/views/index.php" class="btn btn-primary">Continuar Comprando</a>
     </div>
 

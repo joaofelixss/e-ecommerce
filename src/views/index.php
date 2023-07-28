@@ -34,7 +34,7 @@ $produtos = $produtoController->index();
               <p class="card-text"><?= $produto->getDescricao() ?></p>
               <form method="post" action="carrinho.php">
                 <input type="hidden" name="add" value="<?= $produto->getId() ?>">
-                <input type="submit" class="btn btn-primary mt-4" value="Adicionar ao Carrinho">
+                <input type="submit" class="btn btn-primary" value="Adicionar ao Carrinho">
               </form>
             </div>
           </div>

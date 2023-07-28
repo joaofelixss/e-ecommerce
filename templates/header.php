@@ -19,15 +19,42 @@ require_once("../../src/config/url.php");
 <style>
   .body {
     font-family: 'Poppins', sans-serif;
+    padding-bottom: 60px;
+    height: 100vh;
   }
 
   .card-body {
-    height: 250px;
     overflow: auto;
+  }
+
+  .card {
+    width: 80%;
+    max-height: 500px;
+    margin: 0 auto;
+    overflow: auto;
+  }
+
+  .card-img-top {
+    height: 200px;
+    object-fit: contain;
+    width: 100%;
+  }
+
+  .clickable {
+    cursor: pointer;
+    transition: transform .2s;
+  }
+
+  .clickable:hover {
+    transform: scale(1.02);
+  }
+
+  .img-fluid {
+    max-width: 500px;
   }
 </style>
 
-<body>
+<body class="bg-light">
 
   <header class="bg-warning p-2">
     <nav class="navbar navbar-expand-lg navbar-light">

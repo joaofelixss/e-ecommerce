@@ -37,7 +37,7 @@ $itensCarrinho = $carrinhoController->index();
 ?>
 
 <?php if (!empty($itensCarrinho)) : ?>
-  <main class="bg-primary">
+  <main>
     <div class="container">
       <h1>Seu Carrinho</h1>
       <table class="table table-striped">

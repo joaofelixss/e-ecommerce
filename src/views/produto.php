@@ -24,13 +24,13 @@ if ($produto !== null) : ?>
         <div class="col-md-6">
           <img src="<?= $BASE_URL . $produto->getImagem() ?>" class="img-fluid" alt="Imagem do Produto">
         </div>
-        <div class="col-md-6">
+        <div class="col-md-6 mt-3">
           <h2><?= $produto->getNome() ?></h2>
-          <p><?= $produto->getDescricao() ?></p>
-          <p>R$ <?= $produto->getPreco() ?></p>
-          <form method="post" action="carrinho.php">
+          <p class="mt-2"><?= $produto->getDescricao() ?></p>
+          <p class="mt-2">R$ <?= $produto->getPreco() ?></p>
+          <form method="post" action="carrinho.php" class="mt-2">
             <input type="hidden" name="add" value="<?= $produto->getId() ?>">
-            <input type="submit" value="Adicionar ao Carrinho">
+            <input type="submit" class="btn btn-primary" value="Adicionar ao Carrinho">
           </form>
         </div>
       </div>

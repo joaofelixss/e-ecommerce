@@ -18,28 +18,28 @@ $produtoController = new ProdutoController($produtosModel);
 $produtos = $produtoController->index();
 ?>
 
-<main class="bg-primary">
+<main>
   <div class="container pt-5 pb-5">
     <div class="row">
 
       <?php foreach ($produtos as $produto) : ?>
 
         <!-- Produto -->
-        <div class="col-md-4">
-          <div class="card p-3">
+        <div class="col-md-4 mb-3">
+          <div class="card p-3 clickable" onclick="location.href='produto.php?id=<?= $produto->getId() ?>';">
             <img src="<?= $BASE_URL . $produto->getImagem() ?>" class="card-img-top" alt="Imagem do Produto <?= $produto->getId() ?>">
             <div class="card-body d-flex flex-column">
               <h3 class="card-title"><?= $produto->getNome() ?></h3>
-              <h4 class="card-text">R$ <?= $produto->getPreco() ?></h4>
+              <p class="card-text mb-1"><strong>Preço:</strong> R$ <?= $produto->getPreco() ?></p>
               <p class="card-text"><?= $produto->getDescricao() ?></p>
               <form method="post" action="carrinho.php">
                 <input type="hidden" name="add" value="<?= $produto->getId() ?>">
-                <input type="submit" value="Adicionar ao Carrinho">
+                <input type="submit" class="btn btn-primary mt-4" value="Adicionar ao Carrinho">
               </form>
-              <a href="produto.php?id=<?= $produto->getId() ?>">Ver detalhes</a>
             </div>
           </div>
         </div>
+
       <?php endforeach; ?>
 
     </div>

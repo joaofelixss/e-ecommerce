@@ -36,61 +36,65 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 $itensCarrinho = $carrinhoController->index();
 ?>
 
-<?php if (!empty($itensCarrinho)) : ?>
-  <main>
-    <div class="container">
-      <h1>Seu Carrinho</h1>
-      <table class="table table-striped">
-        <thead>
-          <tr>
-            <th>Imagem</th>
-            <th>Nome do Produto</th>
-            <th>Preço Unitário</th>
-            <th>Quantidade</th>
-            <th>Subtotal</th>
-            <th>Ações</th>
-          </tr>
-        </thead>
-        <tbody>
-          <?php foreach ($itensCarrinho as $item) : ?>
-            <?php
-            $produto = $item['produto']; // Acesso ao produto corrigido
-            ?>
+<main>
+  <div class="container py-5">
+    <h1 class="mb-4">Seu Carrinho</h1>
+    <?php if (!empty($itensCarrinho)) : ?>
+      <div class="table-responsive">
+        <table class="table table-bordered table-striped text-center">
+          <thead class="thead-light">
             <tr>
-              <td><img src="<?= $BASE_URL . $produto->getImagem() ?>" alt="Imagem do Produto" width="100"></td>
-              <td><?= $produto->getNome() ?></td>
-              <td>R$ <?= $produto->getPreco() ?></td>
-              <td><?= $item['quantidade'] ?></td>
-              <td>R$ <?= $produto->getPreco() * $item['quantidade'] ?></td>
-              <td>
-                <form method="post">
-                  <input type="hidden" name="update" value="<?= $produto->getId() ?>">
-                  <input type="number" name="quantidade" value="<?= $item['quantidade'] ?>">
-                  <input type="submit" value="Atualizar quantidade">
-                </form>
-                <form method="post">
-                  <input type="hidden" name="remove" value="<?= $produto->getId() ?>">
-                  <input type="submit" value="Remover">
-                </form>
-              </td>
+              <th scope="col">Imagem</th>
+              <th scope="col">Nome do Produto</th>
+              <th scope="col">Preço Unitário</th>
+              <th scope="col">Quantidade</th>
+              <th scope="col">Subtotal</th>
+              <th scope="col">Ações</th>
             </tr>
-          <?php endforeach; ?>
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+            <?php foreach ($itensCarrinho as $item) : ?>
+              <?php
+              $produto = $item['produto']; // Acesso ao produto corrigido
+              ?>
+              <tr>
+                <td class="align-middle"><img src="<?= $BASE_URL . $produto->getImagem() ?>" alt="Imagem do Produto" width="100"></td>
+                <td class="align-middle"><?= $produto->getNome() ?></td>
+                <td class="align-middle">R$ <?= $produto->getPreco() ?></td>
+                <td class="align-middle"><?= $item['quantidade'] ?></td>
+                <td class="align-middle">R$ <?= $produto->getPreco() * $item['quantidade'] ?></td>
+                <td class="align-middle">
+                  <form method="post" class="mb-2">
+                    <input type="hidden" name="update" value="<?= $produto->getId() ?>">
+                    <input type="number" name="quantidade" value="<?= $item['quantidade'] ?>" class="form-control mb-2">
+                    <button type="submit" class="btn btn-info">Atualizar quantidade</button>
+                  </form>
+                  <form method="post">
+                    <input type="hidden" name="remove" value="<?= $produto->getId() ?>">
+                    <button type="submit" class="btn btn-danger">Remover</button>
+                  </form>
+                </td>
+              </tr>
+            <?php endforeach; ?>
+          </tbody>
+        </table>
+
+      </div>
     <?php else : ?>
-      <p>Nenhum item no carrinho.</p>
+      <p class="alert alert-warning">Nenhum item no carrinho.</p>
     <?php endif; ?>
     <div class="text-right">
       <h4>Total: R$ <?= $carrinhoController->getCarrinho()->calcularTotal() ?></h4>
-    </div>
-    <div class="text-right mt-3">
-      <a href="#" class="btn btn-success">Finalizar Compra</a>
-      <!-- Continuar Comprando -->
-      <a href="<?= $BASE_URL ?>src/views/index.php" class="btn btn-primary">Continuar Comprando</a>
+      <div class="mt-4">
+        <a href="<?= $BASE_URL ?>src/views/index.php" class="btn btn-primary">Continuar Comprando</a>
+        <a href="#" class="btn btn-success">
+          <i class="fas fa-shopping-cart"></i> Finalizar Compra
+        </a>
+      </div>
     </div>
 
     <!-- Cupom de desconto -->
-    <div class="mb-3">
+    <div class="mb-3 mt-5">
       <h2>Cupom de Desconto</h2>
       <form>
         <input type="text" class="form-control" placeholder="Digite seu cupom">
@@ -99,7 +103,7 @@ $itensCarrinho = $carrinhoController->index();
     </div>
 
     <!-- Estimativa de Frete e Impostos -->
-    <div class="mb-3">
+    <div class="mb-3 mt-5">
       <h2>Estimativa de Frete e Impostos</h2>
       <form>
         <input type="text" class="form-control" placeholder="Digite seu CEP">
@@ -108,7 +112,7 @@ $itensCarrinho = $carrinhoController->index();
     </div>
 
     <!-- Forma de Pagamento -->
-    <div class="mb-3">
+    <div class="mb-3 mt-5">
       <h2>Forma de Pagamento</h2>
       <div class="form-check">
         <input class="form-check-input" type="radio" name="paymentMethod" id="creditCard" checked>
@@ -124,8 +128,9 @@ $itensCarrinho = $carrinhoController->index();
       </div>
       <!-- Adicione mais opções de pagamento conforme necessário -->
     </div>
-  </main>
+  </div>
+</main>
 
-  <?php
-  require_once(__DIR__ . "/../../templates/footer.php");
-  ?>
+<?php
+require_once(__DIR__ . "/../../templates/footer.php");
+?>

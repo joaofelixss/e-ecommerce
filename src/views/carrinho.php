@@ -87,6 +87,46 @@ $itensCarrinho = $carrinhoController->index();
       <a href="#" class="btn btn-success">Finalizar Compra</a>
     </div>
     </div>
+    <!-- Continuar Comprando -->
+    <div class="mb-3">
+      <a href="<?= $BASE_URL ?>src/views/index.php" class="btn btn-primary">Continuar Comprando</a>
+    </div>
+
+    <!-- Cupom de desconto -->
+    <div class="mb-3">
+      <h2>Cupom de Desconto</h2>
+      <form>
+        <input type="text" class="form-control" placeholder="Digite seu cupom">
+        <button type="submit" class="btn btn-primary mt-2">Aplicar</button>
+      </form>
+    </div>
+
+    <!-- Estimativa de Frete e Impostos -->
+    <div class="mb-3">
+      <h2>Estimativa de Frete e Impostos</h2>
+      <form>
+        <input type="text" class="form-control" placeholder="Digite seu CEP">
+        <button type="submit" class="btn btn-primary mt-2">Calcular</button>
+      </form>
+    </div>
+
+    <!-- Forma de Pagamento -->
+    <div class="mb-3">
+      <h2>Forma de Pagamento</h2>
+      <div class="form-check">
+        <input class="form-check-input" type="radio" name="paymentMethod" id="creditCard" checked>
+        <label class="form-check-label" for="creditCard">
+          Cartão de Crédito
+        </label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="radio" name="paymentMethod" id="paypal">
+        <label class="form-check-label" for="paypal">
+          PayPal
+        </label>
+      </div>
+      <!-- Adicione mais opções de pagamento conforme necessário -->
+    </div>
   </main>
 
   <?php

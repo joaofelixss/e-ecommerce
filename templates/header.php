@@ -1,4 +1,6 @@
 <?php
+session_start();
+
 require_once("../../src/config/url.php");
 ?>
 
@@ -54,10 +56,6 @@ require_once("../../src/config/url.php");
   }
 </style>
 
-<?php if (isset($_SESSION['admin'])) : ?>
-  <p>Bem-vindo, <?php echo $_SESSION['admin']; ?></p>
-<?php endif; ?>
-
 <body class="bg-light">
 
   <header class="bg-warning p-2">
@@ -73,6 +71,22 @@ require_once("../../src/config/url.php");
             <i class="fas fa-search"></i>
           </button>
         </form>
+
+        <!-- Usuário logado -->
+        <span>
+          <?php
+          if (isset($_SESSION['admin'])) {
+            echo "Olá, " . $_SESSION['admin'];
+          } else {
+            echo "Você não está logado.";
+          }
+          ?>
+        </span>
+
+        <!-- Logout -->
+        <a class="nav-link p-2 btn btn-danger" href="<?= $BASE_URL ?>src/controllers/logout.php">Sair</a>
+
+
         <!-- Carrinho -->
         <a class="nav-link" href="<?= $BASE_URL ?>src/views/carrinho.php"><i class="fas fa-shopping-cart"></i> Carrinho</a>
       </div>

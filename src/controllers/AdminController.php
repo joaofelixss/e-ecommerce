@@ -22,7 +22,7 @@ class AdminController
     if ($this->adminModel->findAdmin($username, $password)) {
       $_SESSION['admin'] = $username;
       $_SESSION['success'] = "Login efetuado com sucesso";
-      header('Location: admin.php');
+      header('Location: ../views/index.php');
     } else {
       echo "Usuário ou senha incorretos.";
     }

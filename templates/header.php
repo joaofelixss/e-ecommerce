@@ -54,6 +54,10 @@ require_once("../../src/config/url.php");
   }
 </style>
 
+<?php if (isset($_SESSION['admin'])) : ?>
+  <p>Bem-vindo, <?php echo $_SESSION['admin']; ?></p>
+<?php endif; ?>
+
 <body class="bg-light">
 
   <header class="bg-warning p-2">

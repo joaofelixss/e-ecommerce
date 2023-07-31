@@ -12,6 +12,12 @@ use Felix\ECommerce\Models\Produtos;
 $database = new Connection();
 $conn = $database->getConnection();
 
+//verifica sem tem admin logado
+if (!isset($_SESSION['admin'])) {
+  header('Location: login.php');
+  exit;
+}
+
 $produtosModel = new Produtos($conn);
 $produtoController = new ProdutoController($produtosModel);
 

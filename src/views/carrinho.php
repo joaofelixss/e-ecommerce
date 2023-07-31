@@ -7,9 +7,6 @@ use Felix\ECommerce\Config\Connection;
 use Felix\ECommerce\Controllers\CarrinhoController;
 use Felix\ECommerce\Models\Produtos;
 
-// Iniciar a sessão
-session_start();
-
 $database = new Connection();
 $conn = $database->getConnection();
 

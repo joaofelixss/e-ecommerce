@@ -39,7 +39,7 @@ $produtos = $produtoController->index();
               <p class="card-text"><?= $produto->getDescricao() ?></p>
               <form method="post" action="carrinho.php">
                 <input type="hidden" name="add" value="<?= $produto->getId() ?>">
-                <input type="submit" class="btn btn-primary" value="Adicionar ao Carrinho">
+                <input type="submit" class="btn btn-dark" value="Adicionar ao Carrinho">
               </form>
             </div>
           </div>
@@ -48,6 +48,48 @@ $produtos = $produtoController->index();
       <?php endforeach; ?>
 
     </div>
+
+    <div class="d-flex justify-content-center">
+      <button type="button" class="btn btn-dark" data-toggle="modal" data-target="#addProductModal">
+        Adicionar novo produto
+      </button>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="addProductModal" tabindex="-1" role="dialog" aria-labelledby="addProductModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="addProductModalLabel">Adicionar Produto</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Fechar" style="background-color: #f8f9fa; padding: 5px; border-radius: 5px;">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <form action="addProductHandler.php" method="POST" enctype="multipart/form-data">
+              <div class="form-group mb-3">
+                <label for="name">Nome do Produto:</label>
+                <input type="text" class="form-control" id="name" name="name">
+              </div>
+              <div class="form-group mb-3">
+                <label for="price">Preço:</label>
+                <input type="number" class="form-control" id="price" name="price" step=".01">
+              </div>
+              <div class="form-group mb-3">
+                <label for="description">Descrição:</label>
+                <textarea class="form-control" id="description" name="description"></textarea>
+              </div>
+              <div class="form-group mb-3">
+                <label for="image">Imagem:</label>
+                <input type="file" class="form-control-file" id="image" name="image">
+              </div>
+              <button type="submit" class="btn btn-dark">Adicionar Produto</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
   </div>
 </main>
 

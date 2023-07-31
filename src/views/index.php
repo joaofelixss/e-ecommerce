@@ -32,7 +32,7 @@ $produtos = $produtoController->index();
         <!-- Produto -->
         <div class="col-md-4 mb-3">
           <div class="card p-3 clickable" onclick="location.href='produto.php?id=<?= $produto->getId() ?>';">
-            <img src="<?= $BASE_URL . $produto->getImagem() ?>" class="card-img-top" alt="Imagem do Produto <?= $produto->getId() ?>">
+            <img src="<?= $BASE_URL ?>src/controllers/<?= $produto->getImagem() ?>" class="card-img-top" alt="Imagem do Produto <?= $produto->getId() ?>">
             <div class="card-body d-flex flex-column">
               <h3 class="card-title"><?= $produto->getNome() ?></h3>
               <p class="card-text mb-1"><strong>Preço:</strong> R$ <?= $produto->getPreco() ?></p>
@@ -66,7 +66,7 @@ $produtos = $produtoController->index();
             </button>
           </div>
           <div class="modal-body">
-            <form action="addProductHandler.php" method="POST" enctype="multipart/form-data">
+            <form action="<?= $BASE_URL ?>src/controllers/addProductHandler.php" method="POST" enctype="multipart/form-data">
               <div class="form-group mb-3">
                 <label for="name">Nome do Produto:</label>
                 <input type="text" class="form-control" id="name" name="name">

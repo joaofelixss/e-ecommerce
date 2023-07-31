@@ -13,15 +13,15 @@ class Produtos
   }
 
   // Método para adicionar um novo produto ao banco de dados
-  public function adicionarProduto($nome, $descricao, $preco, $imagem)
+  public function adicionarProduto($nome, $descricao, $preco, $imagem_url)
   {
-    $query = "INSERT INTO produtos(nome, descricao, preco, imagem) VALUES (:nome, :descricao, :preco, :imagem)";
+    $query = "INSERT INTO produtos(nome, descricao, preco, imagem_url) VALUES (:nome, :descricao, :preco, :imagem_url)";
     $stmt = $this->conn->prepare($query);
 
     $stmt->bindParam(":nome", $nome);
     $stmt->bindParam(":descricao", $descricao);
     $stmt->bindParam(":preco", $preco);
-    $stmt->bindParam(":imagem", $imagem);
+    $stmt->bindParam(":imagem_url", $imagem_url);
 
     try {
       $stmt->execute();

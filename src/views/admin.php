@@ -160,11 +160,8 @@ $produtos = $produtoController->index();
         </div>
       <?php endforeach; ?>
     </div>
-
   </div>
 </main>
-
-
 
 <?php
 require_once(__DIR__ . "/../../templates/footer.php");

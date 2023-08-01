@@ -15,6 +15,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
   $produtosModel->excluirProduto($id);
 
-  header('Location: ../views/index.php');
+  header('Location: ../views/admin.php');
   exit;
 }

@@ -25,6 +25,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
   $produtosModel->atualizarProduto($id, $name, $description, $price, $imagePath);
 
-  header('Location: ../views/index.php');
+  header('Location: ../views/admin.php');
   exit;
 }

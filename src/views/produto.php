@@ -24,7 +24,7 @@ $produto = $produtoController->show($idProduto);
       <!-- Detalhes do Produto -->
       <div class="col-md-6">
         <!-- Imagens do Produto -->
-        <img src="<?= $BASE_URL . $produto->getImagem() ?>" class="img-fluid rounded mb-3" alt="Imagem do Produto">
+        <img src="<?= $BASE_URL ?>src/controllers/<?= $produto->getImagem() ?>" class="card-img-top" alt="Imagem do Produto <?= $produto->getId() ?>">
 
         <!-- Nome, Descrição e Preço -->
         <h2 class="mb-3"><?= $produto->getNome() ?></h2>

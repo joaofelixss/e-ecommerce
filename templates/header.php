@@ -56,6 +56,11 @@ require_once("../../src/config/url.php");
     max-width: 500px;
   }
 
+  .view-details {
+    text-decoration: none;
+    color: inherit;
+  }
+
   .querLogar:hover {
     background: white;
     color: black;

@@ -55,6 +55,11 @@ require_once("../../src/config/url.php");
   .img-fluid {
     max-width: 500px;
   }
+
+  .querLogar:hover {
+    background: white;
+    color: black;
+  }
 </style>
 
 <body class="bg-light">
@@ -85,8 +90,14 @@ require_once("../../src/config/url.php");
         </span>
 
         <!-- Logout -->
-        <a class="nav-link p-2 btn btn-danger" href="<?= $BASE_URL ?>src/controllers/logout.php">Sair</a>
+        <?php if (isset($_SESSION['admin'])) : ?>
+          <a class="nav-link p-2 btn btn-danger" href="<?= $BASE_URL ?>src/controllers/logout.php">Sair</a>
+        <?php endif; ?>
 
+        <!-- Quer logar? -->
+        <?php if (!isset($_SESSION['admin'])) : ?>
+          <a class="querLogar nav-link p-2 btn btn-light" href="<?= $BASE_URL ?>src/views/login.php">Faça seu Login</a>
+        <?php endif; ?>
 
         <!-- Carrinho -->
         <a class="nav-link" href="<?= $BASE_URL ?>src/views/carrinho.php"><i class="fas fa-shopping-cart"></i> Carrinho</a>

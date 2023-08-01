@@ -26,6 +26,7 @@ require_once("../../src/config/url.php");
   }
 
   .card-body {
+    height: 270px;
     overflow: auto;
   }
 
@@ -37,7 +38,7 @@ require_once("../../src/config/url.php");
   }
 
   .card-img-top {
-    height: 200px;
+    max-height: 200px;
     object-fit: contain;
     width: 100%;
   }

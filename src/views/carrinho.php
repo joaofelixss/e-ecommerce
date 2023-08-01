@@ -55,7 +55,7 @@ $itensCarrinho = $carrinhoController->index();
               $produto = $item['produto']; // Acesso ao produto corrigido
               ?>
               <tr>
-                <td class="align-middle"><img src="<?= $BASE_URL . $produto->getImagem() ?>" alt="Imagem do Produto" width="100"></td>
+                <td class="align-middle"><img src="<?= $BASE_URL ?>src/controllers/<?= $produto->getImagem() ?>" alt="Imagem do Produto" width="100"></td>
                 <td class="align-middle"><?= $produto->getNome() ?></td>
                 <td class="align-middle">R$ <?= $produto->getPreco() ?></td>
                 <td class="align-middle"><?= $item['quantidade'] ?></td>

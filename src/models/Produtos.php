@@ -34,16 +34,16 @@ class Produtos
   }
 
   // Método para atualizar o produto ao banco de dados
-  public function atualizarProduto($id, $nome, $descricao, $preco, $imagem)
+  public function atualizarProduto($id, $nome, $descricao, $preco, $imagem_url)
   {
-    $query = "UPDATE produtos SET nome = :nome, descricao = :descricao, preco = :preco, imagem = :imagem WHERE id = :id";
+    $query = "UPDATE produtos SET nome = :nome, descricao = :descricao, preco = :preco, imagem_url = :imagem_url WHERE id = :id";
     $stmt = $this->conn->prepare($query);
 
     $stmt->bindParam(":id", $id);
     $stmt->bindParam(":nome", $nome);
     $stmt->bindParam(":descricao", $descricao);
     $stmt->bindParam(":preco", $preco);
-    $stmt->bindParam(":imagem", $imagem);
+    $stmt->bindParam(":imagem_url", $imagem_url);
 
     try {
       $stmt->execute();

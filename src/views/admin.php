@@ -24,6 +24,48 @@ $produtos = $produtoController->index();
 ?>
 
 <main>
+
+  <div class="d-flex p-4 justify-content-center">
+    <button type="button" class="btn btn-dark" data-toggle="modal" data-target="#addProductModal">
+      Adicionar novo produto
+    </button>
+  </div>
+
+  <!-- Modal para adicionar novo produto -->
+  <div class="modal fade" id="addProductModal" tabindex="-1" role="dialog" aria-labelledby="addProductModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="addProductModalLabel">Adicionar Produto</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Fechar" style="background-color: #f8f9fa; padding: 5px; border-radius: 5px;">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form action="<?= $BASE_URL ?>src/controllers/addProductHandler.php" method="POST" enctype="multipart/form-data">
+            <div class="form-group mb-3">
+              <label for="name">Nome do Produto:</label>
+              <input type="text" class="form-control" id="name" name="name">
+            </div>
+            <div class="form-group mb-3">
+              <label for="price">Preço:</label>
+              <input type="number" class="form-control" id="price" name="price" step=".01">
+            </div>
+            <div class="form-group mb-3">
+              <label for="description">Descrição:</label>
+              <textarea class="form-control" id="description" name="description"></textarea>
+            </div>
+            <div class="form-group mb-3">
+              <label for="image">Imagem:</label>
+              <input type="file" class="form-control-file" id="image" name="image">
+            </div>
+            <button type="submit" class="btn btn-dark">Adicionar Produto</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <div class="container pt-5 pb-5">
     <div class="row">
 
@@ -119,62 +161,10 @@ $produtos = $produtoController->index();
       <?php endforeach; ?>
     </div>
 
-    <div class="d-flex justify-content-center">
-      <button type="button" class="btn btn-dark" data-toggle="modal" data-target="#addProductModal">
-        Adicionar novo produto
-      </button>
-    </div>
-
-    <!-- Modal para adicionar novo produto -->
-    <div class="modal fade" id="addProductModal" tabindex="-1" role="dialog" aria-labelledby="addProductModalLabel" aria-hidden="true">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="addProductModalLabel">Adicionar Produto</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Fechar" style="background-color: #f8f9fa; padding: 5px; border-radius: 5px;">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <div class="modal-body">
-            <form action="<?= $BASE_URL ?>src/controllers/addProductHandler.php" method="POST" enctype="multipart/form-data">
-              <div class="form-group mb-3">
-                <label for="name">Nome do Produto:</label>
-                <input type="text" class="form-control" id="name" name="name">
-              </div>
-              <div class="form-group mb-3">
-                <label for="price">Preço:</label>
-                <input type="number" class="form-control" id="price" name="price" step=".01">
-              </div>
-              <div class="form-group mb-3">
-                <label for="description">Descrição:</label>
-                <textarea class="form-control" id="description" name="description"></textarea>
-              </div>
-              <div class="form-group mb-3">
-                <label for="image">Imagem:</label>
-                <input type="file" class="form-control-file" id="image" name="image">
-              </div>
-              <button type="submit" class="btn btn-dark">Adicionar Produto</button>
-            </form>
-          </div>
-        </div>
-      </div>
-    </div>
-
   </div>
 </main>
 
-<script>
-  $(document).on("click", ".open-delete-modal", function() {
-    var productId = $(this).data('id');
-    $("#delete-id").val(productId);
-    $('#deleteProductModal' + productId).modal('show');
-  });
 
-  $(document).on("click", ".open-edit-modal", function() {
-    var productId = $(this).data('id');
-    $('#editProductModal' + productId).modal('show');
-  });
-</script>
 
 <?php
 require_once(__DIR__ . "/../../templates/footer.php");

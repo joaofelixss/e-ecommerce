@@ -2,7 +2,6 @@
 
 namespace Felix\ECommerce\Controllers;
 
-use Felix\ECommerce\Config\Connection;
 use Felix\ECommerce\Models\Admin;
 
 class AdminController
@@ -17,37 +16,32 @@ class AdminController
     $this->adminModel = $adminModel;
   }
 
+  public function authenticate($username, $password)
+  {
+    return $this->adminModel->findAdmin($username, $password);
+  }
+
   public function login($username, $password)
   {
-    if ($this->adminModel->findAdmin($username, $password)) {
+    if ($this->authenticate($username, $password)) {
       $_SESSION['admin'] = $username;
       $_SESSION['success'] = "Login efetuado com sucesso";
-      header('Location: ../views/admin.php');
+      $this->redirectToAdminPage();
     } else {
       echo "Usuário ou senha incorretos.";
     }
   }
 
+  public function redirectToAdminPage()
+  {
+    header('Location: ../views/admin.php');
+    exit;
+  }
+
   public function logout()
   {
     unset($_SESSION['admin']);
-    header('Location: login.php');
+    header('Location: ../actions/login.php');
+    exit;
   }
-}
-
-// Processamento do Formulário de Login
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-  include '../models/Admin.php';
-  include '../config/connection.php';
-
-  // Instancie a classe Connection e obtenha a conexão
-  $connection = (new Connection())->getConnection();
-
-  $adminModel = new \Felix\ECommerce\Models\Admin($connection);
-
-  $username = $_POST['username'];
-  $password = $_POST['password'];
-
-  $adminController = new AdminController($adminModel);
-  $adminController->login($username, $password);
 }

@@ -2,25 +2,17 @@
 
 require_once __DIR__ . '/../../vendor/autoload.php';
 require_once(__DIR__ . "/../../templates/header.php");
-require_once("../config/url.php");
 
-use Felix\ECommerce\Config\Connection;
-use Felix\ECommerce\Controllers\ProdutoController;
-use Felix\ECommerce\Models\Produtos;
-
-//instância a classe connection e obtenha a conexão
-$database = new Connection();
-$conn = $database->getConnection();
+use Felix\ECommerce\Services\ProdutoService;
+use Felix\ECommerce\Models\Produto;
 
 if (!isset($_SESSION['admin'])) {
   header('Location: login.php');
   exit;
 }
 
-$produtosModel = new Produtos($conn);
-$produtoController = new ProdutoController($produtosModel);
-
-$produtos = $produtoController->index();
+$produtoService = new ProdutoService();
+$produtos = $produtoService->getAllProducts();
 ?>
 
 <main>
